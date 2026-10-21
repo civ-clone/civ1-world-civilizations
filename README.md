@@ -23,4 +23,7 @@ registers them into a game with Civ1's personality traits (`civ1-civilization`),
 Earth map (`civ1-earth-generator`). Those start tiles were placed together with Civilization's own 14, at least 5
 tiles from any other, by `civ1-earth-generator`'s `tools/earth-maps`.
 
-Leave this package out and the game has Civilization's own 14 civilizations, unchanged.
+Leave this package out and the game has Civilization's own 14 civilizations. Their Earth start tiles were placed
+alongside these 12, so they're spread out either way. Excluding this package from a build still loads the 12
+`base-civilization-*` packages if they're installed, but those only add attributes and city names; without this
+package nothing registers the civilizations, so they're never played.

@@ -10,13 +10,16 @@ import {
   NormalDevelopment,
   NormalMilitarism,
   Perfectionist,
-} from '@civ-clone/civ1-civilization/Traits';
+} from '@civ-clone/library-civilization/Traits';
 import Civilization from '@civ-clone/core-civilization/Civilization';
+import CityNameRegistry from '@civ-clone/core-civilization/CityNameRegistry';
 import Leader from '@civ-clone/core-civilization/Leader';
 import { earthMaps } from '@civ-clone/civ1-earth-generator/EarthMaps';
 import earthStartTiles from '../EarthStartTiles';
+import registerCiv1CityNames from '@civ-clone/civ1-civilization/registerCityNames';
 import { expect } from 'chai';
 import { instance as attributeRegistryInstance } from '@civ-clone/core-civilization/AttributeRegistry';
+import { instance as cityNameRegistryInstance } from '@civ-clone/core-civilization/CityNameRegistry';
 import { instance as civilizationRegistryInstance } from '@civ-clone/core-civilization/CivilizationRegistry';
 import { instance as earthStartTileRegistryInstance } from '@civ-clone/civ1-earth-generator/EarthStartTileRegistry';
 import { instance as leaderRegistryInstance } from '@civ-clone/core-civilization/LeaderRegistry';
@@ -35,10 +38,12 @@ describe('civ1-world-civilizations', (): void => {
   it('registers the 12 civilizations', (): void => {
     expect(civilizations).to.have.lengthOf(12);
 
-    civilizations.forEach(
-      (CivilizationType) =>
-        expect(civilizationRegistryInstance.includes(CivilizationType)).to.be
-          .true
+    civilizations.forEach((CivilizationType) =>
+      expect(
+        civilizationRegistryInstance
+          .entries()
+          .filter((Registered) => Registered === CivilizationType)
+      ).to.have.lengthOf(1)
     );
   });
 
@@ -58,7 +63,11 @@ describe('civ1-world-civilizations', (): void => {
     expect(leaders).to.have.lengthOf(20);
 
     leaders.forEach((LeaderType) => {
-      expect(leaderRegistryInstance.includes(LeaderType)).to.be.true;
+      expect(
+        leaderRegistryInstance
+          .entries()
+          .filter((Registered) => Registered === LeaderType)
+      ).to.have.lengthOf(1);
       expect(civilizations).to.include(LeaderType.civilization());
 
       const traits = traitRegistryInstance
@@ -106,15 +115,32 @@ describe('civ1-world-civilizations', (): void => {
   });
 
   it("registers each civilization's Earth start tiles", (): void => {
-    civilizations.forEach(
-      (CivilizationType) =>
-        expect(
-          earthStartTileRegistryInstance
-            .entries()
-            .some(
-              (startTile) => startTile.civilizationType() === CivilizationType
-            )
-        ).to.be.true
+    civilizations.forEach((CivilizationType) =>
+      expect(
+        earthStartTileRegistryInstance
+          .entries()
+          .filter(
+            (startTile) => startTile.civilizationType() === CivilizationType
+          )
+      ).to.have.lengthOf(1)
     );
+  });
+
+  // Civ1's spare names go to any civilization that has run out of its own, so one of these there could name two cities.
+  it("doesn't share a city name with Civ1's spare names", (): void => {
+    const spare = new CityNameRegistry();
+
+    registerCiv1CityNames(spare);
+
+    const spareNames = spare.entries().map((cityName) => cityName.name()),
+      names = cityNameRegistryInstance
+        .entries()
+        .filter((cityName) =>
+          civilizations.includes(cityName.civilization() as typeof Civilization)
+        )
+        .map((cityName) => cityName.name());
+
+    expect(names).to.not.be.empty;
+    expect(names.filter((name) => spareNames.includes(name))).to.eql([]);
   });
 });

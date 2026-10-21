@@ -30,7 +30,7 @@ import {
   NormalDevelopment,
   NormalMilitarism,
   Perfectionist,
-} from '@civ-clone/civ1-civilization/Traits';
+} from '@civ-clone/library-civilization/Traits';
 import {
   TraitRegistry,
   instance as traitRegistryInstance,

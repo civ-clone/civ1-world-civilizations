@@ -17,6 +17,7 @@
     "ts:compile": "tsc --build tsconfig.json"
   },
   "devDependencies": {
+    "@civ-clone/civ1-civilization": "github:civ-clone/civ1-civilization",
     "@types/chai": "^4.0",
     "@types/mocha": "^9.0",
     "@types/node": "^14.11.2",
@@ -39,8 +40,8 @@
     "@civ-clone/base-civilization-malian": "^0.1.0",
     "@civ-clone/base-civilization-sioux": "^0.1.0",
     "@civ-clone/base-civilization-viking": "^0.1.0",
-    "@civ-clone/civ1-civilization": "github:civ-clone/civ1-civilization",
     "@civ-clone/civ1-earth-generator": "github:civ-clone/civ1-earth-generator",
-    "@civ-clone/core-civilization": "^0.1.7"
+    "@civ-clone/core-civilization": "^0.1.7",
+    "@civ-clone/library-civilization": "^0.1.0"
   }
 }
