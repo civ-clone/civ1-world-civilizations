@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Chukchi = exports.Australian = exports.Japanese = exports.Indonesian = exports.Khmer = exports.Viking = exports.Ethiopian = exports.Kongo = exports.Malian = exports.Brazilian = exports.Inca = exports.Sioux = void 0;
+var Sioux_1 = require("@civ-clone/base-civilization-sioux/Sioux");
+Object.defineProperty(exports, "Sioux", { enumerable: true, get: function () { return Sioux_1.Sioux; } });
+var Inca_1 = require("@civ-clone/base-civilization-inca/Inca");
+Object.defineProperty(exports, "Inca", { enumerable: true, get: function () { return Inca_1.Inca; } });
+var Brazilian_1 = require("@civ-clone/base-civilization-brazilian/Brazilian");
+Object.defineProperty(exports, "Brazilian", { enumerable: true, get: function () { return Brazilian_1.Brazilian; } });
+var Malian_1 = require("@civ-clone/base-civilization-malian/Malian");
+Object.defineProperty(exports, "Malian", { enumerable: true, get: function () { return Malian_1.Malian; } });
+var Kongo_1 = require("@civ-clone/base-civilization-kongo/Kongo");
+Object.defineProperty(exports, "Kongo", { enumerable: true, get: function () { return Kongo_1.Kongo; } });
+var Ethiopian_1 = require("@civ-clone/base-civilization-ethiopian/Ethiopian");
+Object.defineProperty(exports, "Ethiopian", { enumerable: true, get: function () { return Ethiopian_1.Ethiopian; } });
+var Viking_1 = require("@civ-clone/base-civilization-viking/Viking");
+Object.defineProperty(exports, "Viking", { enumerable: true, get: function () { return Viking_1.Viking; } });
+var Khmer_1 = require("@civ-clone/base-civilization-khmer/Khmer");
+Object.defineProperty(exports, "Khmer", { enumerable: true, get: function () { return Khmer_1.Khmer; } });
+var Indonesian_1 = require("@civ-clone/base-civilization-indonesian/Indonesian");
+Object.defineProperty(exports, "Indonesian", { enumerable: true, get: function () { return Indonesian_1.Indonesian; } });
+var Japanese_1 = require("@civ-clone/base-civilization-japanese/Japanese");
+Object.defineProperty(exports, "Japanese", { enumerable: true, get: function () { return Japanese_1.Japanese; } });
+var Australian_1 = require("@civ-clone/base-civilization-australian/Australian");
+Object.defineProperty(exports, "Australian", { enumerable: true, get: function () { return Australian_1.Australian; } });
+var Chukchi_1 = require("@civ-clone/base-civilization-chukchi/Chukchi");
+Object.defineProperty(exports, "Chukchi", { enumerable: true, get: function () { return Chukchi_1.Chukchi; } });
+//# sourceMappingURL=Civilizations.js.map
