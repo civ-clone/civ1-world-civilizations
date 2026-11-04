@@ -14,9 +14,11 @@ import '@civ-clone/base-civilization-chukchi';
 import registerCivilizations from './registerCivilizations';
 import registerEarthStartTiles from './registerEarthStartTiles';
 import registerLeaders from './registerLeaders';
+import registerNationalThemes from './registerNationalThemes';
 import registerTraits from './registerTraits';
 
 registerCivilizations();
 registerLeaders();
+registerNationalThemes();
 registerTraits();
 registerEarthStartTiles();

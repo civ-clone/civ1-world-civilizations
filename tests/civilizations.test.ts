@@ -47,13 +47,18 @@ describe('civ1-world-civilizations', (): void => {
     );
   });
 
-  it('gives each civilization a people, a nation, two colours and a leader', (): void => {
+  it('gives each civilization a people, a nation, two colours, a national theme and a leader', (): void => {
     civilizations.forEach((CivilizationType) => {
       const names = attributeRegistryInstance
         .getByCivilization(CivilizationType)
         .map((attribute) => attribute.name());
 
-      expect(names).to.include.members(['people', 'nation', 'colors']);
+      expect(names).to.include.members([
+        'people',
+        'nation',
+        'colors',
+        'nationalTheme',
+      ]);
       expect(leaderRegistryInstance.getByCivilization(CivilizationType)).to.not
         .be.empty;
     });
@@ -142,5 +147,20 @@ describe('civ1-world-civilizations', (): void => {
 
     expect(names).to.not.be.empty;
     expect(names.filter((name) => spareNames.includes(name))).to.eql([]);
+  });
+  it("borrows a Civ1 civilization's national theme", (): void => {
+    const themeOf = (CivilizationType: typeof Civilization) =>
+      attributeRegistryInstance
+        .getByCivilization(CivilizationType)
+        .filter((attribute) => attribute.name() === 'nationalTheme')
+        .map((attribute) => attribute.value());
+
+    expect(themeOf(Civilizations.Malian)).to.eql([{ long: 10, short: 24 }]);
+    expect(themeOf(Civilizations.Viking)).to.eql([{ long: 11, short: 25 }]);
+    expect(themeOf(Civilizations.Inca)).to.eql(themeOf(Civilizations.Chukchi));
+
+    civilizations.forEach((CivilizationType) =>
+      expect(themeOf(CivilizationType)).to.have.lengthOf(1)
+    );
   });
 });

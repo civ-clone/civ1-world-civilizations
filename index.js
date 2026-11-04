@@ -16,9 +16,11 @@ require("@civ-clone/base-civilization-chukchi");
 const registerCivilizations_1 = require("./registerCivilizations");
 const registerEarthStartTiles_1 = require("./registerEarthStartTiles");
 const registerLeaders_1 = require("./registerLeaders");
+const registerNationalThemes_1 = require("./registerNationalThemes");
 const registerTraits_1 = require("./registerTraits");
 (0, registerCivilizations_1.default)();
 (0, registerLeaders_1.default)();
+(0, registerNationalThemes_1.default)();
 (0, registerTraits_1.default)();
 (0, registerEarthStartTiles_1.default)();
 //# sourceMappingURL=index.js.map
